@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestBetaApi.Business\TestBetaApi.Business.csproj" />
+    <ProjectReference Include="..\TestBetaApi.Data\TestBetaApi.Data.csproj" />
+  </ItemGroup>
+
+</Project>
