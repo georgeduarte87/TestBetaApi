@@ -9,6 +9,7 @@ using TestBetaApi.Business.Models;
 
 namespace TestBetaApi.API.Controllers
 {
+
     [Route("api/[controller]")]
     public class FornecedoresController : MainController
     {
