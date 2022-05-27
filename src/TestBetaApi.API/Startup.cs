@@ -36,13 +36,7 @@ namespace TestBetaApi.API
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddControllers();
-
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
-
-            });
+            services.WebApiConfig();
 
             services.ResolveDependencies();
 
@@ -62,16 +56,7 @@ namespace TestBetaApi.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestBetaApi.API v1"));
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseApiConfig();
         }
     }
 }

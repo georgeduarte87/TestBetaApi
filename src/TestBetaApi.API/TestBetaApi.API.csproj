@@ -20,4 +20,8 @@
     <ProjectReference Include="..\TestBetaApi.Data\TestBetaApi.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\imagens\" />
+  </ItemGroup>
+
 </Project>
