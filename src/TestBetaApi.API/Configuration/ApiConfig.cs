@@ -20,6 +20,7 @@ namespace TestBetaApi.API.Configuration
 
             });
 
+            /*
             services.AddCors(options =>
             {
                 options.AddPolicy("Development",
@@ -28,6 +29,26 @@ namespace TestBetaApi.API.Configuration
                         .AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader());
+            }); */
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Development",
+                    builder =>
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+
+
+                options.AddPolicy("Production",
+                    builder =>
+                        builder
+                            .WithMethods("GET")
+                            .WithOrigins("http://desenvolvedor.io")
+                            .SetIsOriginAllowedToAllowWildcardSubdomains()
+                            //.WithHeaders(HeaderNames.ContentType, "x-custom-header")
+                            .AllowAnyHeader());
             });
 
             return services;
@@ -36,8 +57,6 @@ namespace TestBetaApi.API.Configuration
         public static IApplicationBuilder UseApiConfig(this IApplicationBuilder app)
         {
             app.UseHttpsRedirection();
-
-            app.UseCors("Development");
 
             app.UseRouting();
 

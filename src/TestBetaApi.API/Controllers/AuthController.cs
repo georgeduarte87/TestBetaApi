@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -15,6 +16,7 @@ using TestBetaApi.Business.Intefaces;
 namespace TestBetaApi.API.Controllers
 {
     [Route("api")]
+    //[DisableCors]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signManager;
@@ -32,7 +34,7 @@ namespace TestBetaApi.API.Controllers
             _appSettings = appSettings.Value;
         }
 
-
+        //[EnableCors("Development")] Não funciona pois a configuração da politica global não é sobrescrita com base em atributo
         [HttpPost("cadastrar")]
         public async Task<ActionResult> Registrar(RegisterUserViewModel registerUser)
         {

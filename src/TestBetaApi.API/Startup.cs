@@ -44,6 +44,17 @@ namespace TestBetaApi.API
         {
             if (env.IsDevelopment())
             {
+                app.UseCors("Development");
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseCors("Development"); // Usar apenas nas demos => Configuração Ideal: Production
+                app.UseHsts();
+            }
+
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestBetaApi.API v1"));
