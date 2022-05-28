@@ -24,7 +24,8 @@ namespace TestBetaApi.API.Controllers
                                       IFornecedorService fornecedorService,
                                       IEnderecoRepository enderecoRepository,
                                       IMapper mapper,
-                                      INotificador notificador) : base(notificador)
+                                      INotificador notificador,
+                                      IUser user) : base(notificador, user)
         {
             _fornecedorRepository = fornecedorRepository;
             _fornecedorService = fornecedorService;
@@ -53,7 +54,19 @@ namespace TestBetaApi.API.Controllers
         [ClaimsAuthorize("Fornecedor","Adicionar")]
         [HttpPost]
         public async Task<ActionResult<FornecedorViewModel>> Adicionar(FornecedorViewModel fornecedorViewModel)
-        {
+        {   /*
+            // verificar se usuário está logado
+            if(User.Identity.IsAuthenticated)
+            {
+                var userName = User.Identity.Name;
+            }
+
+            if(UsuarioAutenticado)
+            {
+                var userName = UsuarioId;
+            } */
+
+
             //if (!ModelState.IsValid) return BadRequest();
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
