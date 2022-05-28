@@ -1,13 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using TestBetaApi.API.Extensions;
 using TestBetaApi.Business.Intefaces;
 using TestBetaApi.Business.Notificacoes;
 using TestBetaApi.Business.Services;
 using TestBetaApi.Data.Context;
 using TestBetaApi.Data.Repository;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace TestBetaApi.API.Configuration
 {
@@ -23,6 +22,9 @@ namespace TestBetaApi.API.Configuration
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IFornecedorService, FornecedorService>();
             services.AddScoped<IProdutoService, ProdutoService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUser, AspNetUser>();
 
             return services;
         }
