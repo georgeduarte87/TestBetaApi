@@ -6,7 +6,8 @@ using TestBetaApi.Data.Context;
 using TestBetaApi.Data.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.Extensions.Options;
 
 namespace TestBetaApi.API.Configuration
 {
@@ -25,6 +26,8 @@ namespace TestBetaApi.API.Configuration
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUser, AspNetUser>();
+
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
             return services;
         }
