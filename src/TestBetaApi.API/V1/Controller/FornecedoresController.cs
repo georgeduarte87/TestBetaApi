@@ -4,15 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TestBetaApi.API.Controllers;
 using TestBetaApi.API.Extensions;
 using TestBetaApi.API.ViewModels;
 using TestBetaApi.Business.Intefaces;
 using TestBetaApi.Business.Models;
 
-namespace TestBetaApi.API.Controllers
+namespace TestBetaApi.API.V1.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class FornecedoresController : MainController
     {
         private readonly IFornecedorRepository _fornecedorRepository;

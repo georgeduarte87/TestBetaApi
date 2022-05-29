@@ -8,13 +8,17 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using TestBetaApi.API.Controllers;
 using TestBetaApi.API.Extensions;
 using TestBetaApi.API.ViewModels;
 using TestBetaApi.Business.Intefaces;
 
-namespace TestBetaApi.API.Controllers
+namespace TestBetaApi.API.V1.Controllers
 {
-    [Route("api")]
+    //[Route("api")]
+    [ApiVersion("2.0")]
+    [ApiVersion("1.0", Deprecated = true)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signManager;
