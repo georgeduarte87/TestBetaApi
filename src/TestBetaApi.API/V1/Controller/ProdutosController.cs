@@ -6,14 +6,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using TestBetaApi.API.Controllers;
 using TestBetaApi.API.ViewModels;
 using TestBetaApi.Business.Intefaces;
 using TestBetaApi.Business.Models;
 
-namespace TestBetaApi.API.Controllers
+namespace TestBetaApi.API.V1.Controllers
 {
     [Authorize]
-    [Route("api/produtos")]
+    //[Route("api/produtos")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ProdutosController : MainController
     {
         private readonly IProdutoRepository _produtoRepository;
